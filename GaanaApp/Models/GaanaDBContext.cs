@@ -20,6 +20,7 @@ namespace GaanaApp.Models
         public virtual DbSet<Artist> Artists { get; set; }
         public virtual DbSet<Songslist> Songslists { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public object User { get; internal set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
