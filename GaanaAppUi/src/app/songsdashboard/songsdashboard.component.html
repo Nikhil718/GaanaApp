@@ -1,0 +1,76 @@
+<nav style=" background: hsla(205, 46%, 30%,1);   background: linear-gradient(90deg, hsla(205,46%,30%,1) 0%, hsla(260,29%,36%,1) 100%);" class="navbar navbar-light ">
+    <div class="container-fluid">
+        <h1 style="color:aliceblue;">Gaana App</h1>
+        <div class="d-flex">
+            <button (click)="clickAddSong()" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success">Add Songs</button>
+        </div>
+    </div>
+</nav>
+
+<table class="table mt-3 table-hover text-center">
+    <thead>
+        <tr>
+            <th scope="col">Cover</th>
+            <th scope="col">Song Name</th>
+            <th scope="col">Artist</th>
+            <th scope="col">Rating</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of songData">
+            <td><img src="assets\Images\Image1.jpg" style="width:200px; height:auto;"></td>
+           <td>{{row.songname}}</td>
+           <td>{{row.artistname}}</td>
+           <td>{{row.ratings}}</td>
+            <td>
+                <button (click)="onEdit(row)" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info">Edit</button>
+                <button (click)="deleteSong(row)" class="btn btn-danger mx-3">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Songs Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formValue">
+                <div class="form-row">
+                    
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Song Name</label>
+                    <input formControlName="songname" type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                  </div>
+                  
+                </div>
+                
+                  <div class="form-group col-md-4">
+                    <label for="inputState">Artist</label>
+                    <select formControlName="artist" id="inputState" class="form-control">
+                      <option selected>Choose...</option>
+                      <option>RalulDitto</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="inputZip">Rating</label>
+                    <input formControlName="rating" type="text" class="form-control" id="inputZip">
+                  </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button  type="button" *ngIf="showAdd" (click)="postSongDetails()"  class="btn btn-primary">Add</button>
+          <button  type="button" *ngIf="showUpdate" (click)="updateSongDetails()"  class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -24,7 +24,7 @@ public loginForm!: FormGroup
     .subscribe((res=>{
       alert(res.message);
       this.loginForm.reset();
-      this.router.navigate(['signup'])
+      this.router.navigate(['songsdashboard'])
     }))
   }
 }

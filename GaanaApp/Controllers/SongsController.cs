@@ -36,7 +36,7 @@ namespace GaanaApp.Controllers
                 });
             }
         }
-        [HttpPost("update_song")]
+        [HttpPut("update_song")]
         public IActionResult UpdateSong([FromBody] Songslist songObj)
         {
             if(songObj == null)
