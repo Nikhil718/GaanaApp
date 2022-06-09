@@ -23,7 +23,6 @@ export class SongsdashboardComponent implements OnInit {
     this.formValue = this.formbuilder.group({
       songid: [''],
       songname : [''],
-      image : [''],
       artistname :[''],
       ratings :['']
       
@@ -38,7 +37,7 @@ export class SongsdashboardComponent implements OnInit {
   }
   postSongDetails(){
     this.songModelObj.songname = this.formValue.value.songname;
-    this.songModelObj.artistname = this.formValue.value.artist;
+    this.songModelObj.artistname = this.formValue.value.artistname;
     this.songModelObj.ratings = this.formValue.value.rating;
     
 
@@ -79,7 +78,7 @@ this.api.getSong()
   updateSongDetails(){
     this.songModelObj.songname = this.formValue.value.songname;
     
-    this.songModelObj.artistname = this.formValue.value.artist;
+    this.songModelObj.artistname = this.formValue.value.artistname;
     this.songModelObj.ratings = this.formValue.value.rating;
     this.api.updateSong(this.songModelObj,this.songModelObj.songid)
     .subscribe(res=>{
@@ -91,4 +90,10 @@ this.api.getSong()
     })
   }
 
+
+  clickAddArtist(){
+    this.formValue.reset();
+    this.showAdd = true;
+    this.showUpdate = false;
+  }
 }

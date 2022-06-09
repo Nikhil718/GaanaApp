@@ -8,6 +8,7 @@ export class ApiService {
 
 public loginAPIUrl : string = "https://localhost:44303/api/Login/"
 public songAPIUrl : string = "https://localhost:44303/api/Songs/"
+public artistAPIUrl : string = "https://localhost:44303/api/Artist/"
   constructor(private _http : HttpClient) { }
 
   signUp(userObj : any){
@@ -34,7 +35,7 @@ public songAPIUrl : string = "https://localhost:44303/api/Songs/"
   }
 
   updateSong(data : any, id: number){
-    return this._http.put<any>(`${this.songAPIUrl}update_song`,data)
+    return this._http.put<any>(`${this.songAPIUrl}update_song`+id,data)
     .pipe(map((res:any)=>{
       return res;
     }))
@@ -42,6 +43,37 @@ public songAPIUrl : string = "https://localhost:44303/api/Songs/"
 
   deleteSong(songid: number){
     return this._http.delete<any>(`${this.songAPIUrl}delete_song/`+songid)
+    .pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+
+
+  // Artist Api Call
+
+  postArtist(data : any){
+    return this._http.post<any>(`${this.artistAPIUrl}add_artist`,data)
+    .pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+
+  getArtist(){
+    return this._http.get<any>(`${this.artistAPIUrl}get_all_artist`)
+    .pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+
+  updateArtist(data : any, id: number){
+    return this._http.put<any>(`${this.artistAPIUrl}update_artist`+id,data)
+    .pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+
+  deleteArtist(artistid: number){
+    return this._http.delete<any>(`${this.artistAPIUrl}delete_artist/`+artistid)
     .pipe(map((res:any)=>{
       return res;
     }))
