@@ -1,7 +1,7 @@
 export class SongModel{
-    id : number= 0;
+    songid : number= 0;
     songname : string = '';
-    artist : string = '';
-    rating : string = '';
+    artistname : string = '';
+    ratings : string = '';
     
 }

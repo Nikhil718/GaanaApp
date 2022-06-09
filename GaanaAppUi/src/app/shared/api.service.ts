@@ -34,14 +34,14 @@ public songAPIUrl : string = "https://localhost:44303/api/Songs/"
   }
 
   updateSong(data : any, id: number){
-    return this._http.put<any>("",data)
+    return this._http.put<any>(`${this.songAPIUrl}update_song`,data)
     .pipe(map((res:any)=>{
       return res;
     }))
   }
 
-  deleteSong(id: number){
-    return this._http.delete<any>("")
+  deleteSong(songid: number){
+    return this._http.delete<any>(`${this.songAPIUrl}delete_song/`+songid)
     .pipe(map((res:any)=>{
       return res;
     }))

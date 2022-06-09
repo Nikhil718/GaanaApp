@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApiService } from '../shared/api.service';
 import { SongModel } from './songdashboard.model';
-
+import { ArtistModel } from '../artistdashboard/artistdashboard_model';
 @Component({
   selector: 'app-songsdashboard',
   templateUrl: './songsdashboard.component.html',
@@ -11,7 +11,9 @@ import { SongModel } from './songdashboard.model';
 export class SongsdashboardComponent implements OnInit {
   formValue !: FormGroup;
   songModelObj : SongModel = new SongModel();
+  artistModelObj : ArtistModel = new ArtistModel();
   songData !: any;
+  artistData !: any;
   showAdd !: boolean;
   showUpdate !: boolean;
 
@@ -19,15 +21,16 @@ export class SongsdashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.formValue = this.formbuilder.group({
+      songid: [''],
       songname : [''],
       image : [''],
-      artist :[''],
-      rating :[''],
-      userid :[''],
-      artistid : ['']
+      artistname :[''],
+      ratings :['']
+      
     })
     this.getAllSong();
   }
+  
   clickAddSong(){
     this.formValue.reset();
     this.showAdd = true;
@@ -35,9 +38,8 @@ export class SongsdashboardComponent implements OnInit {
   }
   postSongDetails(){
     this.songModelObj.songname = this.formValue.value.songname;
-   
-    this.songModelObj.artist = this.formValue.value.artist;
-    this.songModelObj.rating = this.formValue.value.rating;
+    this.songModelObj.artistname = this.formValue.value.artist;
+    this.songModelObj.ratings = this.formValue.value.rating;
     
 
     this.api.postSong(this.songModelObj)
@@ -59,7 +61,7 @@ this.api.getSong()
 })
   }
   deleteSong(row : any){
-    this.api.deleteSong(row.id)
+    this.api.deleteSong(row.songid)
     .subscribe(res=>{
       alert("Song Deleted")
       this.getAllSong();
@@ -69,17 +71,17 @@ this.api.getSong()
   onEdit(row: any){
     this.showAdd = false;
     this.showUpdate = true;
-    this.songModelObj.id = row.id;
-    this.formValue.controls['songName'].setValue(row.songname)
-    this.formValue.controls['artist'].setValue(row.artist)
-    this.formValue.controls['rating'].setValue(row.rating)
+    this.songModelObj.songid = row.songid;
+    this.formValue.controls['songname'].setValue(row.songname)
+    this.formValue.controls['artistname'].setValue(row.artistname)
+    this.formValue.controls['ratings'].setValue(row.ratings)
   }
   updateSongDetails(){
     this.songModelObj.songname = this.formValue.value.songname;
     
-    this.songModelObj.artist = this.formValue.value.artist;
-    this.songModelObj.rating = this.formValue.value.rating;
-    this.api.updateSong(this.songModelObj,this.songModelObj.id)
+    this.songModelObj.artistname = this.formValue.value.artist;
+    this.songModelObj.ratings = this.formValue.value.rating;
+    this.api.updateSong(this.songModelObj,this.songModelObj.songid)
     .subscribe(res=>{
       alert("Updated successfully")
       let ref = document.getElementById('cancel')

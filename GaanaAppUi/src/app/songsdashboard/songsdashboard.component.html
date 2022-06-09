@@ -2,7 +2,10 @@
     <div class="container-fluid">
         <h1 style="color:aliceblue;">Gaana App</h1>
         <div class="d-flex">
-            <button (click)="clickAddSong()" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success">Add Songs</button>
+            <button style='margin-right:16px' (click)="clickAddSong()" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success ">Add Songs</button>
+            <button style='margin: right 16px;' class="me-1 btn btn-primary">Top Artists</button>
+            <button  (click)="clickAddSong()" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Add Artist</button>
+            
         </div>
     </div>
 </nav>
@@ -10,6 +13,7 @@
 <table class="table mt-3 table-hover text-center">
     <thead>
         <tr>
+            <th scope="col">SongId</th>
             <th scope="col">Cover</th>
             <th scope="col">Song Name</th>
             <th scope="col">Artist</th>
@@ -19,6 +23,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let row of songData">
+            <td>{{row.songid}}</td>
             <td><img src="assets\Images\Image1.jpg" style="width:200px; height:auto;"></td>
            <td>{{row.songname}}</td>
            <td>{{row.artistname}}</td>
@@ -48,21 +53,20 @@
                     
                   <div class="form-group col-md-6">
                     <label for="inputEmail4">Song Name</label>
-                    <input formControlName="songname" type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                    <input formControlName="songname" type="email" class="form-control" id="inputEmail4" placeholder="Enter the song name">
                   </div>
                   
                 </div>
                 
                   <div class="form-group col-md-4">
                     <label for="inputState">Artist</label>
-                    <select formControlName="artist" id="inputState" class="form-control">
-                      <option selected>Choose...</option>
-                      <option>RalulDitto</option>
+                    <select  formControlName="artistname" id="inputState" class="form-control">
+                      <option *ngFor="let row of artistData" [value]="row.Value">{{row.artistname}}</option>
                     </select>
                   </div>
                   <div class="form-group col-md-2">
                     <label for="inputZip">Rating</label>
-                    <input formControlName="rating" type="text" class="form-control" id="inputZip">
+                    <input formControlName="ratings" type="text" class="form-control" id="inputZip">
                   </div>
               </form>
         </div>
@@ -70,6 +74,50 @@
           <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button  type="button" *ngIf="showAdd" (click)="postSongDetails()"  class="btn btn-primary">Add</button>
           <button  type="button" *ngIf="showUpdate" (click)="updateSongDetails()"  class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+  
+  
+  <!-- Modal Add Artist-->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Artist Details</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formValue">
+                <div class="form-row">
+                    
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Artist Name</label>
+                    <input formControlName="songname" type="email" class="form-control" id="inputEmail4" placeholder="Enter the artist name">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Bate od Birth</label>
+                    <input formControlName="songname" type="email" class="form-control" id="inputEmail4" placeholder="Enter the date of birth">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Bio</label>
+                    <input formControlName="songname" type="email" class="form-control" id="inputEmail4" placeholder="Enter the bio">
+                  </div>
+                  
+                </div>
+                
+                  
+                  
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Add</button>
         </div>
       </div>
     </div>
