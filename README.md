@@ -26,9 +26,16 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 1) Dotnet core web api
 2) Entity Framework
+3) REST API
 3) Microsoft SQL Server
 4) Angular
 5) Bootstrap
+
+## Folder Reference
+
+1) GaanaApp- Is a webapi folder
+2) GaanaAppUi- Is a angular frontend folder
+3) UI Screenshots- Screenshots of all the UI with functionality
 
 
 
