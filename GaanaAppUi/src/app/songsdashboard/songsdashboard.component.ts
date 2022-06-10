@@ -34,10 +34,8 @@ export class SongsdashboardComponent implements OnInit {
       
     })
     this.getAllSong();
-    
-
   }
-
+// Method for artist dropdown in UI
   initializedropdown(){
      this.api.getArtist()
     .subscribe(res=>{
@@ -67,13 +65,17 @@ export class SongsdashboardComponent implements OnInit {
       alert("Something Went Wrong")
     })
   }
-  getAllSong(){
+
+
+getAllSong(){
 this.api.getSong()
 .subscribe(res=>{
   this.songData = res.songsDetails;
 })
   }
-  deleteSong(row : any){
+
+
+deleteSong(row : any){
     this.api.deleteSong(row.songid)
     .subscribe(res=>{
       alert("Song Deleted")
@@ -81,7 +83,7 @@ this.api.getSong()
     })
   }
   
-  onEdit(row: any){
+onEdit(row: any){
     this.initializedropdown();
     this.showAdd = false;
     this.showUpdate = true;
@@ -92,7 +94,8 @@ this.api.getSong()
     console.log(row.artistid);
     this.formValue.controls['ratings'].setValue(row.ratings)
   }
-  updateSongDetails(){
+
+updateSongDetails(){
     this.songModelObj.songname = this.formValue.value.songname;
     
     this.songModelObj.artistId = this.formValue.value.artistname;
@@ -107,15 +110,16 @@ this.api.getSong()
     }) 
   }
 
+  //Artist Controller Methods
 
-  clickAddArtist(){
+clickAddArtist(){
     this.formValue.reset();
     this.showAdd = true;
     this.showUpdate = false;
   }
 
 
-  postArtistDetails(){
+postArtistDetails(){
     this.artistModelObj.artistname = this.formValue.value.artistname;
     this.artistModelObj.dob = this.formValue.value.dob;
     this.artistModelObj.bio = this.formValue.value.bio;
@@ -134,7 +138,7 @@ this.api.getSong()
     })
   }
 
-  getAllArtist(){
+getAllArtist(){
     this.api.getArtist()
     .subscribe(res=>{
       this.artistData = res.artistDetails;

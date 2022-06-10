@@ -27,38 +27,23 @@ showUpdate !: boolean;
   this.getAllArtist();
 }
 
-postArtistDetails(){
-  this.artistModelObj.artistname = this.formValue.value.artistname;
-  this.artistModelObj.dob = this.formValue.value.dob;
-  this.artistModelObj.bio = this.formValue.value.bio;
-  
-
-  this.api.postArtist(this.artistModelObj)
-  .subscribe(res=>{
-    alert("Artist Added Successfully")
-    let ref = document.getElementById('cancel')
-    ref?.click();
-    this.formValue.reset();
-    this.getAllArtist();
-  },
-  err=>{
-    alert("Something Went Wrong")
-  })
-}
 getAllArtist(){
   this.api.getArtist()
   .subscribe(res=>{
     this.artistData = res.artistDetails;
   })
     }
-    deleteArtist(row : any){
+
+
+deleteArtist(row : any){
       this.api.deleteArtist(row.artistid)
       .subscribe(res=>{
         alert("Artist Deleted")
         this.getAllArtist();
       })
     }
-    onEdit(row: any){
+
+onEdit(row: any){
       this.showAdd = false;
       this.showUpdate = true;
       this.artistModelObj.artistid = row.artistid;
@@ -66,7 +51,8 @@ getAllArtist(){
       this.formValue.controls['dob'].setValue(row.dob)
       this.formValue.controls['bio'].setValue(row.bio)
     }
-    updateArtistDetails(){
+
+updateArtistDetails(){
       this.artistModelObj.artistname = this.formValue.value.artistname;
       this.artistModelObj.dob = this.formValue.value.dob;
       this.artistModelObj.bio = this.formValue.value.bio;

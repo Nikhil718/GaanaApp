@@ -19,7 +19,7 @@ public artistAPIUrl : string = "https://localhost:44303/api/Artist/"
     return this._http.post<any>(`${this.loginAPIUrl}login`, userObj)
   }
 
-
+// Song api callS
   postSong(data : any){
     return this._http.post<any>(`${this.songAPIUrl}add_song`,data)
     .pipe(map((res:any)=>{
