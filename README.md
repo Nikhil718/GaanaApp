@@ -15,11 +15,12 @@ Run `ng generate component component-name` to generate a new component. You can 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Instruction
-
-SingUp Page- For Registring the user which will be stored in Database
-Login Page- After Successful Registration user can login and add their favorurite songs
-Songs Dashboard- There is mainly three buttons Add Sond Top Artist and Add Artist
-Artist Dashboard- Displays top artist 
+<ul>
+<li>SingUp Page- For Registring the user which will be stored in Database</li>
+<li>Login Page- After Successful Registration user can login and add their favorurite songs</li>
+<li>Songs Dashboard- There is mainly three buttons Add Sond Top Artist and Add Artist</li>
+<li>Artist Dashboard- Displays top artist</li>
+</ul> 
 
 ## Technology Stack
 
