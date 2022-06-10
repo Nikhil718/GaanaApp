@@ -67,10 +67,9 @@ getAllArtist(){
       this.formValue.controls['bio'].setValue(row.bio)
     }
     updateArtistDetails(){
-      this.artistModelObj.artistname = this.formValue.value.Artistname;
-      
-      this.artistModelObj.artistname = this.formValue.value.Artistname;
+      this.artistModelObj.artistname = this.formValue.value.artistname;
       this.artistModelObj.dob = this.formValue.value.dob;
+      this.artistModelObj.bio = this.formValue.value.bio;
       this.api.updateArtist(this.artistModelObj,this.artistModelObj.artistid)
       .subscribe(res=>{
         alert("Updated successfully")

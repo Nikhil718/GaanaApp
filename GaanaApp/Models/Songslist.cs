@@ -12,7 +12,7 @@ namespace GaanaApp.Models
         public string Image { get; set; }
         public string Ratings { get; set; }
         public int Artistid { get; set; }
-        public string Artistname { get; set; }
+
         public int Userid { get; set; }
         public bool? Deleted { get; set; }
 

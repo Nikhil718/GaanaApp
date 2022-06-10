@@ -9,7 +9,7 @@ namespace GaanaApp.Models
     {
         public Artist()
         {
-            Songslists = new HashSet<Songslist>();
+            //Songslists = new HashSet<Songslist>();
         }
 
         public int Artistid { get; set; }
@@ -18,6 +18,6 @@ namespace GaanaApp.Models
         public string Bio { get; set; }
         public bool? Deleted { get; set; }
 
-        public virtual ICollection<Songslist> Songslists { get; set; }
+        //public virtual ICollection<Songslist> Songslists { get; set; }
     }
 }

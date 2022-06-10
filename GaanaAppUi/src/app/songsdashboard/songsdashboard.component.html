@@ -9,25 +9,27 @@
         </div>
     </div>
 </nav>
-
+<div>
+    <h5 style=" font-size: 40px; font-weight: bold;" class="text-center">Top Songs</h5>
+</div>
 <table class="table mt-3 table-hover text-center">
     <thead>
         <tr>
-            <th scope="col">SongId</th>
+             <!-- <th scope="col">Song Playlist No</th>  -->
             <th scope="col">Cover</th>
             <th scope="col">Song Name</th>
             <th scope="col">Artist</th>
             <th scope="col">Rating</th>
             <th scope="col">Action</th>
-        </tr>
+        </tr> 
     </thead>
     <tbody>
         <tr *ngFor="let row of songData">
-            <td>{{row.songid}}</td>
+            <!-- <td>{{row.songid}}</td> -->
             <td><img src="assets\Images\Image1.jpg" style="width:200px; height:auto;"></td>
            <td>{{row.songname}}</td>
-           <td>{{row.artistname}}</td>
-           <td>{{row.ratings}}</td>
+           <td>{{row.artist.artistname}}</td>
+           <td>{{row.ratings}}/5</td>
             <td>
                 <button (click)="onEdit(row)" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info">Edit</button>
                 <button (click)="deleteSong(row)" class="btn btn-danger mx-3">Delete</button>
@@ -47,26 +49,27 @@
           <h5 class="modal-title" id="exampleModalLabel">Songs Details</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        
         <div class="modal-body">
             <form [formGroup]="formValue">
                 <div class="form-row">
                     
                   <div class="form-group col-md-6">
                     <label for="inputEmail4">Song Name</label>
-                    <input formControlName="songname" type="email" class="form-control" id="inputEmail4" placeholder="Enter the song name">
+                    <input formControlName="songname" type="text" class="form-control" id="inputEmail4" placeholder="Enter the song name">
                   </div>
                   
                 </div>
                 
                   <div class="form-group col-md-4">
                     <label for="inputState">Artist</label>
-                    <select  formControlName="artistname" id="inputState" class="form-control">
-                      <option >Rahual Ditto</option>
+                    <select formControlName="artistname"  id="artist" class="form-control">
+                        <option *ngFor="let c of artistdropdown" [ngValue]="c.artistid">{{ c.artistname }}</option>
                     </select>
                   </div>
                   <div class="form-group col-md-2">
                     <label for="inputZip">Rating</label>
-                    <input formControlName="ratings" type="text" class="form-control" id="inputZip">
+                    <input formControlName="ratings" type="text" class="form-control" id="inputZip" placeholder="/5">
                   </div>
               </form>
         </div>
@@ -98,23 +101,23 @@
                     
                   <div class="form-group col-md-6">
                     <label for="inputEmail4">Artist Name</label>
-                    <input formControlName="songname" type="email" class="form-control" id="inputEmail4" placeholder="Enter the artist name">
+                    <input formControlName="artistname" type="text" class="form-control" id="inputEmail4" placeholder="Enter the artist name">
                   </div>
                   <div class="form-group col-md-6">
                     <label for="inputEmail4">Bate od Birth</label>
-                    <input formControlName="songname" type="email" class="form-control" id="inputEmail4" placeholder="Enter the date of birth">
+                    <input formControlName="dob" type="text" class="form-control" id="inputEmail4" placeholder="Enter the date of birth">
                   </div>
                   <div class="form-group col-md-6">
                     <label for="inputEmail4">Bio</label>
-                    <input formControlName="songname" type="email" class="form-control" id="inputEmail4" placeholder="Enter the bio">
+                    <input formControlName="bio" type="text" class="form-control" id="inputEmail4" placeholder="Enter the bio">
                   </div>
                   
                 </div>
               </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Add</button>
+          <button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button"  type="button" *ngIf="showAdd" (click)="postArtistDetails()" class="btn btn-primary">Add</button>
         </div>
       </div>
     </div>

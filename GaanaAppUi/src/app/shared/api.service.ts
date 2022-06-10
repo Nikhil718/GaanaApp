@@ -35,7 +35,7 @@ public artistAPIUrl : string = "https://localhost:44303/api/Artist/"
   }
 
   updateSong(data : any, id: number){
-    return this._http.put<any>(`${this.songAPIUrl}update_song`+id,data)
+    return this._http.put<any>(`${this.songAPIUrl}update_song`,data)
     .pipe(map((res:any)=>{
       return res;
     }))
@@ -66,7 +66,7 @@ public artistAPIUrl : string = "https://localhost:44303/api/Artist/"
   }
 
   updateArtist(data : any, id: number){
-    return this._http.put<any>(`${this.artistAPIUrl}update_artist`+id,data)
+    return this._http.put<any>(`${this.artistAPIUrl}update_artist`,data)
     .pipe(map((res:any)=>{
       return res;
     }))

@@ -60,9 +60,7 @@ namespace GaanaApp.Models
 
                 entity.Property(e => e.Artistid).HasColumnName("artistid");
 
-                entity.Property(e => e.Artistname)
-                    .HasMaxLength(50)
-                    .HasColumnName("artistname");
+                
 
                 entity.Property(e => e.Deleted).HasColumnName("deleted");
 
@@ -78,11 +76,11 @@ namespace GaanaApp.Models
 
                 entity.Property(e => e.Userid).HasColumnName("userid");
 
-                entity.HasOne(d => d.Artist)
-                    .WithMany(p => p.Songslists)
-                    .HasForeignKey(d => d.Artistid)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Songslist_Artist");
+                //entity.HasOne(d => d.Artist)
+                //    //.WithMany(p => p.Songslists)
+                //    //.HasForeignKey(d => d.Artistid)
+                //    //.OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK_Songslist_Artist");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Songslists)
