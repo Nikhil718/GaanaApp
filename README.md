@@ -14,7 +14,20 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Further help
+## Instruction
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+SingUp Page- For Registring the user which will be stored in Database
+Login Page- After Successful Registration user can login and add their favorurite songs
+Songs Dashboard- There is mainly three buttons Add Sond Top Artist and Add Artist
+Artist Dashboard- Displays top artist 
+
+## Technology Stack
+
+1) Dotnet core web api
+2) Entity Framework
+3) Microsoft SQL Server
+4) Angular
+5) Bootstrap
+
+
 
