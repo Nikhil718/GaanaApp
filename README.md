@@ -32,8 +32,8 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 5) Bootstrap
 
 ## Application Overview
-![A  Login](https://user-images.githubusercontent.com/57681078/173051434-3029f8d6-0f88-47bd-8ffd-214f49e9287d.png)
-![B  Signup](https://user-images.githubusercontent.com/57681078/173051455-a391d6ac-8c05-4f57-bc7c-f01fffa1976c.png)
+![A  Login](https://user-images.githubusercontent.com/57681078/173051434-3029f8d6-0f88-47bd-8ffd-214f49e9287d.png) | ![B  Signup](https://user-images.githubusercontent.com/57681078/173051455-a391d6ac-8c05-4f57-bc7c-f01fffa1976c.png)
+
 
 ![C  SongPage](https://user-images.githubusercontent.com/57681078/173051484-1695127c-1f40-4c6e-ad99-e0227fee9db5.png)
 ![D  ArtistPage](https://user-images.githubusercontent.com/57681078/173051515-b331376d-d5a6-470a-98d9-686bc77878a8.png)
